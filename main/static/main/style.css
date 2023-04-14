@@ -1,0 +1,36 @@
+#brand-name {
+    font-size: 5rem;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+#songTitle:hover {
+    text-decoration: underline solid #3B71CA  1px !important;
+
+}
+
+.hover-primary:hover {
+    color: #3B71CA !important; 
+}
+
+.spotify-link {
+    cursor: pointer;
+}
+
+.flex-wrapper {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+
+.disabled {
+    pointer-events: none;
+    cursor: default;
+    opacity: 0.6;
+}
+

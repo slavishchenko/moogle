@@ -1,0 +1,40 @@
+{% extends 'main/base.html' %}
+{% block navbar %}
+    {% include 'main/navbar.html' %}
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-12 col-lg-6 mt-5">
+            {% include 'main/song-detail-card.html' %}
+        </div>
+        <div class="col-12 col-lg-6 mt-5">
+            <ul class="list-group list-group-flush">
+                {% if not is_single %}
+                    <li class="list-group-item d-flex justify-content-between" aria-disabled="true">
+                        <strong>{{ album.name }} ({{ album.release_year }})</strong>
+                        <a href="{{ album.external_urls.spotify }}" class="spotify-link py-0 px-2 h6" target="_blank">
+                            <span class="align-middle">
+                                <i class="bi bi-spotify text-success"></i>
+                            </span>
+                        </a>
+                    </li>
+                    {% for track in album.tracks  %}
+                        {% include 'main/album-tracks-list.html' %}
+                    {% endfor %}
+                {% else %}
+                    <li class="list-group-item d-flex justify-content-between" aria-disabled="true">
+                        <strong> Top Tracks by {{ artist.name }}</strong>
+                        <a href="{{ artist.external_urls.spotify }}" class="spotify-link py-0 px-2 h6" target="_blank">
+                            <span class="align-middle">
+                                <i class="bi bi-spotify text-success"></i>
+                            </span>
+                        </a>
+                    </li>
+                    {% for track in top_tracks %}
+                        {% include 'main/album-tracks-list.html' %}
+                    {% endfor %}
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}

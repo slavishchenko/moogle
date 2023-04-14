@@ -1,0 +1,13 @@
+<li class="list-group-item">
+    <div class="container">
+        {% if track.name != song.name %}
+            <a class="text-dark hover-primary" href="{% url 'song-detail' track.id track.name|slugify %}">
+                {{ forloop.counter }}. {{ track.artists.0.name }} - {{ track.name }}
+            </a>
+        {% else %}
+            <a class="text-dark disabled" href="{% url 'song-detail' track.id track.name|slugify %}">
+                {{ forloop.counter }}. {{ track.artists.0.name }} - {{ track.name }}
+            </a>
+        {% endif %}
+    </div>
+</li>

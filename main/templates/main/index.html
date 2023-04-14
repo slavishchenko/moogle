@@ -1,0 +1,13 @@
+{% extends 'main/base.html' %} {% load crispy_forms_tags %} {% block content%}
+<header class="mt-5">
+  <h1 id="brand-name" class="text-primary my-5"><a href="{% url 'index' %}" class="text-decoration-none">Moogle</a></h1>
+</header>
+
+{% include 'main/search-form.html' %}
+
+{% if response %}
+    {% for song, audio_analysis, album in response  %}
+        {% include 'main/search-item-card.html' %}
+    {% endfor %}
+{% endif %}
+{% endblock%}
