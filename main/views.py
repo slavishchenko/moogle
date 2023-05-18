@@ -6,7 +6,7 @@ from django.core.exceptions import BadRequest
 from django.shortcuts import redirect, render
 from django.utils.html import escape
 
-from spotify.client import Client
+from spoti2py.client import Client
 
 client_id = os.environ.get("CLIENT_ID")
 client_secret = os.environ.get("CLIENT_SECRET")
@@ -33,6 +33,7 @@ def index(request):
                         ]
                     )
                     albums = [song.album for song in songs]
+
                     return zip(songs, analysis, albums)
 
             response = client.loop.run_until_complete(fetch())
@@ -72,7 +73,7 @@ def song_detail(request, id, title):
         is_single = True
 
     about = f"""<em>{song.name}</em> is a song by <em>{artist.name}</em>, released in {album.release_year} 
-                    {'as a standalone single' if is_single else f'as part of "{album.name}" album.'}
+                    {'as a standalone single' if is_single else f'as a part of the "{album.name}" album.'}
                 """
     title = f"{artist.name} - {song.name} - moogle"
 

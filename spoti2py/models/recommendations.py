@@ -1,3 +1,5 @@
+from typing import Dict, List
+
 from .track import Track
 
 
@@ -9,7 +11,7 @@ class Recommendations:
     :ivar seeds: A list of recommendation seed JSON objects.
     """
 
-    def __init__(self, tracks: list[Track], seeds: list[dict]) -> None:
+    def __init__(self, tracks: List[Track], seeds: List[Dict]) -> None:
         self.tracks = tracks
         self.seeds = seeds
 

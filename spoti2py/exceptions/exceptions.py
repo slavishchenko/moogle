@@ -1,3 +1,6 @@
+from typing import Optional
+
+
 class NoSearchQuery(Exception):
     """Raised if no search query is provided"""
 
@@ -17,7 +20,7 @@ class InvalidItemType(Exception):
 
 
 class SpotifyException(Exception):
-    def __init__(self, status_code: int, endpoint: str, msg: str | None):
+    def __init__(self, status_code: int, endpoint: str, msg: Optional[str] = None):
         self.status_code = status_code
         self.endpoint = endpoint
         self.msg = msg

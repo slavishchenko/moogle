@@ -1,3 +1,5 @@
+from typing import Dict, List, Optional
+
 from .artist import Artist
 from .image import Image
 
@@ -35,27 +37,27 @@ class Album:
 
     def __init__(
         self,
-        album_group: str,
         album_type: str,
-        artists: list[Artist],
-        available_markets: list[str],
-        external_urls: dict,
+        artists: List[Artist],
+        available_markets: List[str],
+        external_urls: Dict,
         href: str,
         id: str,
-        images: list[Image],
+        images: List[Image],
         name: str,
         release_date: str,
         release_date_precision: str,
         total_tracks: int,
         type: str,
         uri: str,
-        external_ids=None | dict,
-        copyrights=None | list["Copyright"],
-        genres=None | list[str],
-        label=None | str,
-        popularity=None | int,
+        album_group: Optional[str] = None,
+        external_ids: Optional[Dict] = None,
+        copyrights: Optional[List["Copyright"]] = None,
+        genres: Optional[List[str]] = None,
+        label: Optional[str] = None,
+        popularity: Optional[int] = None,
         tracks=None,
-        is_playable=None | bool,
+        is_playable: Optional[bool] = None,
     ) -> None:
         self.album_group = album_group
         self.album_type = album_type
@@ -78,15 +80,16 @@ class Album:
         self.populariy = popularity
         self.tracks = tracks
         self.is_playble = is_playable
-    @property
-    def release_year(self):
-        return self.release_date.split('-')[0]
-    
+
     def __str__(self):
         return f"{self.name}"
 
     def __repr__(self):
         return f"{self.__class__.__name__}({self.name})"
+
+    @property
+    def release_year(self):
+        return self.release_date.split("-")[0]
 
 
 class Copyright:

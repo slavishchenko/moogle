@@ -1,3 +1,5 @@
+from typing import Dict, List, Optional
+
 from .album import Album
 from .artist import Artist
 
@@ -32,11 +34,11 @@ class Track:
 
     def __init__(
         self,
-        artists: list[Artist],
+        artists: List[Artist],
         disc_number: int,
         duration_ms: int,
         explicit: bool,
-        external_urls: dict,
+        external_urls: Dict,
         href: str,
         id: str,
         is_local: bool,
@@ -45,11 +47,11 @@ class Track:
         track_number: int,
         type: str,
         uri: str,
-        available_markets: list[str] = None,
+        available_markets: List[str] = None,
         is_playable: bool = None,
-        album=None | list[Album],
-        external_ids=None | dict,
-        popularity=None | float,
+        album: Optional[List[Album]] = None,
+        external_ids: Optional[Dict] = None,
+        popularity: Optional[float] = None,
     ) -> None:
         self.album = album
         self.artists = artists

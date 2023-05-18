@@ -1,3 +1,6 @@
+from typing import List, Union
+
+
 class Search:
     """
     Spotify search response.
@@ -14,11 +17,11 @@ class Search:
     def __init__(
         self,
         href: str,
-        items: list[object],
+        items: List[object],
         limit: int,
-        next: str | None,
+        next: Union[str, None],
         offset: int,
-        previous: str | None,
+        previous: Union[str, None],
         total: int,
     ) -> None:
         self.href = href

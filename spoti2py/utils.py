@@ -1,9 +1,11 @@
-from spotify.exceptions import InvalidItemType
+from typing import Dict, List, Union
+
+from .exceptions import InvalidItemType
 
 
 def parse_json(
-    item_type: str, json_response: dict, models: dict
-) -> list[object] | object:
+    item_type: str, json_response: Dict, models: Dict
+) -> Union[List[object], object]:
     """
     Maps json response to python classes.
 
@@ -32,7 +34,7 @@ def parse_json(
         return item
 
 
-def set_additional_classes(classes: dict, item: object) -> object:
+def set_additional_classes(classes: Dict, item: object) -> object:
     """
     Maps json objects to additional classes specified in MODELS dictionary under the key "extra".
 
